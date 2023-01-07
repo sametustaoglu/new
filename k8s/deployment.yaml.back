@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: europe-north1-docker.pkg.dev/demoglobalit-monitoring/demo/app:1234567
+        image: europe-north1-docker.pkg.dev/demoglobalit-monitoring/demo/app:0886af8
         ports:
         - containerPort: 8080
