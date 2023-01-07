@@ -11,7 +11,7 @@ jobs:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: europe-north1-docker.pkg.dev/demoglobalit-monitoring/demo
+      IMAGE_NAME: europe-north1-docker.pkg.dev/demoglobalit-monitoring/demo/app
       PROJECT_ID: demoglobalit-monitorin
     steps:
     - name: Checkout
