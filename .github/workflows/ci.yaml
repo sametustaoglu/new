@@ -37,4 +37,30 @@ jobs:
         docker push $IMAGE_NAME:${GITHUB_SHA::7} 
            
     
+  change_image_tag:
+    needs: build-push-gcr
+    name: change image tag
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - run: sed -i.back "/app:/s/:[0-7].*/:${GITHUB_SHA::7}/g" ./k8s/deployment.yaml
+
+    - name: commit 
+      run: |-
+        git config --local user.mail bot@gmail.com
+        git config --local user.name "samet"
+        git status
+        git add ./k8s
+        git commit -m "tag"
+    
+    - name: git push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.PASS }}
+        branch: main
+
+
 
